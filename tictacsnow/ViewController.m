@@ -116,6 +116,32 @@ typedef NS_ENUM(NSInteger, CellState) {
 
 - (BOOL)checkCollission:(shapeImageView *)shape
 {
+    BOOL foundIntersection = NO;
+    int intersectIndex = -1;
+    for (int i = 0; i < self.cellCollection.count; ++i) {
+        
+        UIView *view = (UIView *)self.cellCollection[i];
+        
+        if (CGRectIntersectsRect(shape.frame,view.frame)) {
+            NSLog(@"Found intersection");
+            if (!foundIntersection) {
+                foundIntersection = YES;
+                intersectIndex = i;
+            } else {
+                //intersecting two possible cells, try again
+                return NO;
+            }
+        }
+    }
+    
+    if (foundIntersection) {
+        NSLog(@"intersectIndex %d", intersectIndex);
+        UIView *view = (UIView *)self.cellCollection[intersectIndex];
+        //NSLog(@"Center: %@", view.center);
+        shape.center = view.center;
+        return YES;
+    }
+    
     return NO;
 }
 
