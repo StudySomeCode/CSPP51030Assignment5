@@ -12,6 +12,13 @@
 
 @property (strong, nonatomic) shapeImageView *x;
 @property (strong, nonatomic) shapeImageView *o;
+@property (strong, nonatomic) NSMutableArray *grid;
+
+typedef NS_ENUM(NSInteger, CellState) {
+    Empty,
+    X,
+    O
+};
 
 @end
 
@@ -20,6 +27,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSLog(@"viewController viewDidLoad");
+    
+    self.grid = [[NSMutableArray alloc] initWithCapacity:3];
+    for (int i = 0; i < 3; ++i) {
+        self.grid[i] = [[NSMutableArray alloc] initWithCapacity:3];
+        for (int j = 0; j < 3; ++j) {
+            self.grid[i][j] = [NSNumber numberWithInt:Empty];
+        }
+    }
     
     self.x = [[shapeImageView alloc] initWithImage:[UIImage imageNamed:@"xImage"]];
     [self addRecognizers:self.x];
@@ -34,6 +51,8 @@
     self.o.yOrigin = 450;
     self.o.frame = CGRectMake(self.o.xOrigin, self.o.yOrigin, self.o.frame.size.width, self.o.frame.size.height);
     [self.view addSubview:self.o];
+    
+    [self startTurn:self.x];
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,10 +76,12 @@
     panRecognizer.minimumNumberOfTouches = 1;
     [piece addGestureRecognizer:panRecognizer];
     
+    /*
     UITapGestureRecognizer *tapReconizer =
     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(animateDouble:)];
     [tapReconizer setDelegate:self];
     [piece addGestureRecognizer:tapReconizer];
+     */
 }
 
 - (void)panGestureDetected:(UIPanGestureRecognizer *)recognizer
@@ -75,17 +96,57 @@
     } else if (state == UIGestureRecognizerStateEnded || state == UIGestureRecognizerStateCancelled)
     {
         NSLog(@"Stopped moving");
+        
         shapeImageView *shape = (shapeImageView*)recognizer.view;
-        [UIView animateWithDuration:1.0
+        
+        if ([self checkCollission:shape]) {
+            if (shape == self.x) {
+                [self startTurn:self.o];
+            } else {
+                [self startTurn:self.x];
+            }
+        } else {
+            [UIView animateWithDuration:1.0
                          animations:^{
                              shape.frame = CGRectMake(shape.xOrigin, shape.yOrigin, shape.frame.size.width, shape.frame.size.height);
                          }];
+        }
     }
+}
+
+- (BOOL)checkCollission:(shapeImageView *)shape
+{
+    return NO;
 }
 
 - (void)animateDouble:(UITapGestureRecognizer *)recognizer
 {
-    shapeImageView *shape = (shapeImageView*)recognizer.view;
+    shapeImageView *shape = (shapeImageView *)recognizer.view;
+    [shape animateDouble];
+}
+
+- (void)startTurn:(shapeImageView *)shape
+{
+    NSLog(@"viewController startTurn");
+
+    if (shape == self.x) {
+        self.o.userInteractionEnabled = NO;
+        [UIView animateWithDuration:1.0
+                         animations:^{
+                             self.o.alpha = 0.5;
+                             shape.alpha = 1.0;
+                         }];
+    } else {
+        self.x.userInteractionEnabled = NO;
+        [UIView animateWithDuration:1.0
+                         animations:^{
+                             self.x.alpha = 0.5;
+                             shape.alpha = 1.0;
+                         }];
+    }
+    
+    shape.userInteractionEnabled = YES;
+    
     [shape animateDouble];
 }
 @end

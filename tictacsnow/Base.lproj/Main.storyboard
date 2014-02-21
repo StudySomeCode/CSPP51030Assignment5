@@ -79,6 +79,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outletCollection property="cellCollection" destination="R50-lx-ebf" id="uY7-Sv-3h2"/>
+                        <outletCollection property="cellCollection" destination="e4l-P6-fxr" id="QuT-h1-7DJ"/>
+                        <outletCollection property="cellCollection" destination="1WG-pf-RWZ" id="bdG-D6-SPK"/>
+                        <outletCollection property="cellCollection" destination="qu9-0k-yiU" id="1Br-la-PHp"/>
+                        <outletCollection property="cellCollection" destination="HMD-Pj-BJT" id="JWf-uA-xqU"/>
+                        <outletCollection property="cellCollection" destination="dYg-Ob-fYa" id="aUm-fs-Oi3"/>
+                        <outletCollection property="cellCollection" destination="KMu-mc-hY6" id="dpv-Vp-HD8"/>
+                        <outletCollection property="cellCollection" destination="XiZ-px-c9T" id="OS1-BU-M1h"/>
+                        <outletCollection property="cellCollection" destination="Bz4-M8-WT2" id="KHL-Ql-F6M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

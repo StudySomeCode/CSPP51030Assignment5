@@ -30,16 +30,15 @@
 
 - (void)animateDouble
 {
-    NSLog(@"animate Double on shape");
-    
+    NSLog(@"animateDouble");
     [UIView animateWithDuration:1.0
                      animations:^{
-                         self.transform = CGAffineTransformMakeScale(2.0, 2.0);
+                         self.transform = CGAffineTransformScale(self.transform, 2.0, 2.0);
                      }
                      completion:^(BOOL completed){
                          if (completed) {
                              [UIView animateWithDuration:1.0 animations:^{
-                                 self.transform = CGAffineTransformMakeScale(1.0, 1.0);
+                                 self.transform = CGAffineTransformScale(self.transform, 0.5, 0.5);
                              }];
                          }
                      }];

@@ -10,6 +10,7 @@
 #import "shapeImageView.h"
 
 @interface ViewController : UIViewController <UIGestureRecognizerDelegate>
+@property (strong, nonatomic) IBOutletCollection(UIView) NSArray *cellCollection;
 
 - (IBAction)infoTapped:(UIButton *)sender;
 
