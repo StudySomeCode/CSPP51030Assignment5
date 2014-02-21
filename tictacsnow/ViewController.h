@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "shapeImageView.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UIGestureRecognizerDelegate>
 
 - (IBAction)infoTapped:(UIButton *)sender;
 

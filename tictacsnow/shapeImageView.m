@@ -15,28 +15,36 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.userInteractionEnabled = YES;
-        
-        UIPanGestureRecognizer *panRecognizer =
-        [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureDetected:)];
-        [panRecognizer setDelegate:self];
-        panRecognizer.minimumNumberOfTouches = 1;
-        panRecognizer.maximumNumberOfTouches = 1;
-        [self addGestureRecognizer:panRecognizer];
+        NSLog(@"UserInteraction? %hhd", self.userInteractionEnabled);
     }
     return self;
 }
 
-- (void)panGestureDetected:(UIPanGestureRecognizer *)recognizer
+- (id)initWithImage:(UIImage *)image
 {
-    NSLog(@"Moved");
-    UIGestureRecognizerState state = [recognizer state];
-    
-    if (state == UIGestureRecognizerStateBegan || state == UIGestureRecognizerStateChanged)
-    {
-        CGPoint translation = [recognizer translationInView:recognizer.view];
-        [recognizer.view setTransform:CGAffineTransformTranslate(recognizer.view.transform, translation.x, translation.y)];
-        [recognizer setTranslation:CGPointZero inView:recognizer.view];
+    self = [super initWithImage:image];
+    if (self) {
+        self.userInteractionEnabled = YES;
+        NSLog(@"UserInteraction? %hhd", self.userInteractionEnabled);
     }
+    return self;
+}
+
+- (void)animateDouble
+{
+    NSLog(@"animate Double");
+    
+    [UIView animateWithDuration:1.0
+                     animations:^{
+                         self.transform = CGAffineTransformMakeScale(2.0, 2.0);
+                     }
+                     completion:^(BOOL completed){
+                         if (completed) {
+                             [UIView animateWithDuration:1.0 animations:^{
+                                 self.transform = CGAffineTransformMakeScale(1.0, 1.0);
+                             }];
+                         }
+                     }];
 }
 
 /*

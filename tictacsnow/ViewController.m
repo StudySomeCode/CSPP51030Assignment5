@@ -17,13 +17,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    shapeImageView *x = [[shapeImageView alloc] initWithImage:[UIImage imageNamed:@"xImage"]];
+    [self addRecognizers:x];
+    //shapeImageView *o = [[shapeImageView alloc] initWithImage:[UIImage imageNamed:@"oImage"]];
+    [self.view addSubview:x];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)infoTapped:(UIButton *)sender {
@@ -33,5 +35,49 @@
                           cancelButtonTitle:nil destructiveButtonTitle:nil
                           otherButtonTitles:@"I guess not...", nil]; 
     [msg showInView:self.view];
+}
+
+- (void)addRecognizers:(shapeImageView *)piece {
+    UIPanGestureRecognizer *panRecognizer =
+    [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureDetected:)];
+    [panRecognizer setDelegate:self];
+    panRecognizer.minimumNumberOfTouches = 1;
+    [piece addGestureRecognizer:panRecognizer];
+    
+    UITapGestureRecognizer *tapReconizer =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(animateDouble)];
+    [tapReconizer setDelegate:self];
+    [piece addGestureRecognizer:tapReconizer];
+}
+
+- (void)panGestureDetected:(UIPanGestureRecognizer *)recognizer
+{
+    NSLog(@"Moved");
+    UIGestureRecognizerState state = [recognizer state];
+    
+    if (state == UIGestureRecognizerStateBegan || state == UIGestureRecognizerStateChanged)
+    {
+        CGPoint translation = [recognizer translationInView:recognizer.view];
+        [recognizer.view setTransform:CGAffineTransformTranslate(recognizer.view.transform, translation.x, translation.y)];
+        [recognizer setTranslation:CGPointZero inView:recognizer.view];
+    }
+}
+
+- (void)animateDouble
+{
+    NSLog(@"animate Double");
+    /*
+    [UIView animateWithDuration:1.0
+                     animations:^{
+                         self.transform = CGAffineTransformMakeScale(2.0, 2.0);
+                     }
+                     completion:^(BOOL completed){
+                         if (completed) {
+                             [UIView animateWithDuration:1.0 animations:^{
+                                 self.transform = CGAffineTransformMakeScale(1.0, 1.0);
+                             }];
+                         }
+                     }];
+     */
 }
 @end
