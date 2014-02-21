@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F356D10118B6D79000975E39 /* shapeImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F356D10018B6D79000975E39 /* shapeImageView.m */; };
 		F3848F2518B5B19B00CF0924 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3848F2418B5B19B00CF0924 /* Foundation.framework */; };
 		F3848F2718B5B19B00CF0924 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3848F2618B5B19B00CF0924 /* CoreGraphics.framework */; };
 		F3848F2918B5B19B00CF0924 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3848F2818B5B19B00CF0924 /* UIKit.framework */; };
@@ -34,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F356D0FF18B6D79000975E39 /* shapeImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shapeImageView.h; sourceTree = "<group>"; };
+		F356D10018B6D79000975E39 /* shapeImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shapeImageView.m; sourceTree = "<group>"; };
 		F3848F2118B5B19B00CF0924 /* tictacsnow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tictacsnow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3848F2418B5B19B00CF0924 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F3848F2618B5B19B00CF0924 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -119,6 +122,8 @@
 				F3848F3A18B5B19B00CF0924 /* ViewController.m */,
 				F3848F3C18B5B19B00CF0924 /* Images.xcassets */,
 				F3848F2B18B5B19B00CF0924 /* Supporting Files */,
+				F356D0FF18B6D79000975E39 /* shapeImageView.h */,
+				F356D10018B6D79000975E39 /* shapeImageView.m */,
 			);
 			path = tictacsnow;
 			sourceTree = "<group>";
@@ -250,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3848F3B18B5B19B00CF0924 /* ViewController.m in Sources */,
+				F356D10118B6D79000975E39 /* shapeImageView.m in Sources */,
 				F3848F3518B5B19B00CF0924 /* AppDelegate.m in Sources */,
 				F3848F3118B5B19B00CF0924 /* main.m in Sources */,
 			);
@@ -460,6 +466,7 @@
 				F3848F5518B5B19C00CF0924 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F3848F5618B5B19C00CF0924 /* Build configuration list for PBXNativeTarget "tictacsnowTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +475,7 @@
 				F3848F5818B5B19C00CF0924 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
