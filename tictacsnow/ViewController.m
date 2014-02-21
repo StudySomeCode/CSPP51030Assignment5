@@ -26,4 +26,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)infoTapped:(UIButton *)sender {
+    UIActionSheet *msg = [[UIActionSheet alloc]
+                          initWithTitle:@"It's tic tac toe. Do you really need instructions?"
+                          delegate:nil
+                          cancelButtonTitle:nil destructiveButtonTitle:nil
+                          otherButtonTitles:@"I guess not...", nil]; 
+    [msg showInView:self.view];
+}
 @end
