@@ -65,14 +65,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="xImage" translatesAutoresizingMaskIntoConstraints="NO" id="uhS-mC-zIq" customClass="shapeImageView">
-                                <rect key="frame" x="0.0" y="478" width="90" height="90"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="oImage" translatesAutoresizingMaskIntoConstraints="NO" id="ggc-Br-mVH" customClass="shapeImageView">
-                                <rect key="frame" x="230" y="478" width="90" height="90"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rw-0L-JXZ">
                                 <rect key="frame" x="149" y="512" width="22" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -94,8 +86,6 @@
     </scenes>
     <resources>
         <image name="Board" width="320" height="320"/>
-        <image name="oImage" width="90" height="90"/>
-        <image name="xImage" width="90" height="90"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

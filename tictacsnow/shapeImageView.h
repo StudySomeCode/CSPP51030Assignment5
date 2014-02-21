@@ -10,4 +10,9 @@
 
 @interface shapeImageView : UIImageView <UIGestureRecognizerDelegate>
 
+@property (nonatomic) int xOrigin;
+@property (nonatomic) int yOrigin;
+
+- (void)animateDouble;
+
 @end

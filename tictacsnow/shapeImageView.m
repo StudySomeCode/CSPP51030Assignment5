@@ -15,7 +15,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.userInteractionEnabled = YES;
-        NSLog(@"UserInteraction? %hhd", self.userInteractionEnabled);
     }
     return self;
 }
@@ -25,14 +24,13 @@
     self = [super initWithImage:image];
     if (self) {
         self.userInteractionEnabled = YES;
-        NSLog(@"UserInteraction? %hhd", self.userInteractionEnabled);
     }
     return self;
 }
 
 - (void)animateDouble
 {
-    NSLog(@"animate Double");
+    NSLog(@"animate Double on shape");
     
     [UIView animateWithDuration:1.0
                      animations:^{
