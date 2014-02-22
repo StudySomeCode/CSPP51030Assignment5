@@ -146,12 +146,19 @@ typedef NS_ENUM(NSInteger, CellState) {
         UIView *view = (UIView *)self.cellCollection[intersectIndex];
         [UIView animateWithDuration:0.5
                          animations:^{
-                             shape.center = [view convertPoint:view.center fromView:nil];
+                             shape.frame = CGRectMake(view.frame.origin.x,
+                                                      view.frame.origin.y,
+                                                      shape.frame.size.width,
+                                                      shape.frame.size.height);
                          } completion:^(BOOL finished){
                              if (finished) {
-                                 UIImageView *img = [[UIImageView alloc] initWithImage:shape.image];
+                                 UIImageView *img =
+                                    [[UIImageView alloc] initWithImage:shape.image];
                                  [view addSubview:img];
-                                 shape.frame = CGRectMake(shape.xOrigin, shape.yOrigin, shape.frame.size.width, shape.frame.size.height);
+                                 shape.frame = CGRectMake(shape.xOrigin,
+                                                          shape.yOrigin,
+                                                          shape.frame.size.width,
+                                                          shape.frame.size.height);
                              }
                          }];
         return YES;
