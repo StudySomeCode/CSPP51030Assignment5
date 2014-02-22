@@ -104,6 +104,7 @@ typedef NS_ENUM(NSInteger, CellState) {
             if ([self checkWinner]){
                 [self displayAlert];
             } else {
+                [self playSoundEffect:@"Servo Movement 01"];
                 if (shape == self.x) {
                     [self startTurn:self.o];
                 } else {
@@ -111,6 +112,7 @@ typedef NS_ENUM(NSInteger, CellState) {
                 }
             }
         } else {
+            [self playSoundEffect:@"Record Player Scratching"];
             [UIView animateWithDuration:1.0
                          animations:^{
                              shape.frame = CGRectMake(shape.xOrigin, shape.yOrigin, shape.frame.size.width, shape.frame.size.height);
@@ -216,9 +218,12 @@ typedef NS_ENUM(NSInteger, CellState) {
     NSString *message;
     if (self.winner == Empty) {
         message = @"No winner :(";
+        [self playSoundEffect:@"Kids Booing"];
     } else if (self.winner == X) {
+        [self playSoundEffect:@"Kids Cheering"];
         message = @"Congratulations Player X";
     } else {
+        [self playSoundEffect:@"Kids Cheering"];
         message = @"Congratulations Player O";
     }
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Game Over"
@@ -227,11 +232,13 @@ typedef NS_ENUM(NSInteger, CellState) {
                                        cancelButtonTitle:@"Restart Game"
                                        otherButtonTitles:nil]; 
     [alertView show];
+
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:
 (NSInteger)buttonIndex
 {
+    [self playSoundEffect:@"Warp Engineering 03"];
     [self resetGame];
 }
 
@@ -255,5 +262,16 @@ typedef NS_ENUM(NSInteger, CellState) {
     
     shape.userInteractionEnabled = YES;
     [shape animateDouble];
+}
+
+//Taken from the flower garden code
+- (void)playSoundEffect:(NSString*)soundName
+{
+    NSLog(@">>> Play sound named: %@",soundName);
+    NSString *soundPath = [[NSBundle mainBundle] pathForResource:soundName ofType:@"caf"];
+    NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
+    SystemSoundID soundID;
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundURL, &soundID);
+    AudioServicesPlaySystemSound(soundID);
 }
 @end
