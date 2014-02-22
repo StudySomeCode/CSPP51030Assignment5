@@ -12,6 +12,7 @@
 
 @property (nonatomic) int xOrigin;
 @property (nonatomic) int yOrigin;
+@property (nonatomic) int value;
 
 - (void)animateDouble;
 

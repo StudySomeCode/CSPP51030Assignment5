@@ -30,14 +30,13 @@
 
 - (void)animateDouble
 {
-    NSLog(@"animateDouble");
-    [UIView animateWithDuration:1.0
+    [UIView animateWithDuration:0.5
                      animations:^{
                          self.transform = CGAffineTransformScale(self.transform, 2.0, 2.0);
                      }
                      completion:^(BOOL completed){
                          if (completed) {
-                             [UIView animateWithDuration:1.0 animations:^{
+                             [UIView animateWithDuration:0.5 animations:^{
                                  self.transform = CGAffineTransformScale(self.transform, 0.5, 0.5);
                              }];
                          }
